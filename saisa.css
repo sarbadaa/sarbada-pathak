@@ -429,3 +429,11 @@ footer {
   font-size: 0.9em;
   z-index: 5;
 }
+
+html, body {
+  min-height: 100%;
+  height: auto !important;     /* override fixed height */
+  overflow-x: hidden !important; 
+  overflow-y: scroll !important; /* force vertical scroll */
+  -webkit-overflow-scrolling: touch; /* smooth scroll for iOS */
+}
