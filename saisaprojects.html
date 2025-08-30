@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Saisa | Projects</title>
+  <link rel="stylesheet" href="saisa.css">
+</head>
+<body>
+  <!-- Starfield Background -->
+  <canvas id="starfield"></canvas>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="logo">Saisa</div>
+    <ul class="nav-links">
+      <li><a href="saisahome.html">Home</a></li>
+      <li><a href="saisaabout.html">About</a></li>
+      <li><a href="saisaprojects.html" class="active">Projects</a></li>
+      <li><a href="saisacontact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Projects Page -->
+  <section class="projects-page">
+    <h2 class="page-header">My Projects</h2>
+    <div class="projects-container">
+      
+      <div class="project-card">
+        <h3>🚀 Star Explorer</h3>
+        <p>A 3D space simulation project where users can explore stars and galaxies.</p>
+        <a href="#" class="btn">View Project</a>
+      </div>
+
+      <div class="project-card">
+        <h3>🛰️ Satellite Tracker</h3>
+        <p>A real-time web app to track satellites orbiting Earth.</p>
+        <a href="#" class="btn">View Project</a>
+      </div>
+
+      <div class="project-card">
+        <h3>🌍 Earth Visualizer</h3>
+        <p>An interactive globe visualization with climate and population data.</p>
+        <a href="#" class="btn">View Project</a>
+      </div>
+
+      <div class="project-card">
+        <h3>🌌 Galaxy Map</h3>
+        <p>A project mapping nearby galaxies using astronomical datasets.</p>
+        <a href="#" class="btn">View Project</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 Saisa | Designed Among The Stars</p>
+  </footer>
+
+  <!-- Starfield Script -->
+  <script>
+    const canvas = document.getElementById("starfield");
+    const ctx = canvas.getContext("2d");
+    let stars = [];
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    window.addEventListener("resize", resizeCanvas);
+    resizeCanvas();
+
+    function createStars(count) {
+      stars = [];
+      for (let i = 0; i < count; i++) {
+        stars.push({
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height,
+          size: Math.random() * 2,
+          speed: Math.random() * 0.5 + 0.2
+        });
+      }
+    }
+
+    function animateStars() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.fillStyle = "white";
+      stars.forEach(star => {
+        ctx.beginPath();
+        ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2);
+        ctx.fill();
+        star.y += star.speed;
+        if (star.y > canvas.height) {
+          star.y = 0;
+          star.x = Math.random() * canvas.width;
+        }
+      });
+      requestAnimationFrame(animateStars);
+    }
+
+    createStars(150);
+    animateStars();
+  </script>
+</body>
+</html>
