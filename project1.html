@@ -1,17 +1,155 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Project 1 - Floating Stars</title>
-    <link rel="stylesheet" href="project1.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Saisa Astronomy Facts</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+      padding: 20px;
+      text-align: center;
+      transition: background 1s ease; /* smooth color transition */
+      color: #ffe0b2;
+    }
+
+    h1 {
+      margin-bottom: 40px;
+      font-size: 2rem;
+    }
+
+    #fact-btn {
+      padding: 12px 25px;
+      font-size: 16px;
+      border-radius: 8px;
+      border: none;
+      background-color: #8d6e63;
+      color:#fff;
+      
+
+
+      
+      cursor: pointer;
+      transition: transform 0.2s, background-color 0.3s;
+      margin-bottom: 30px;
+    }
+
+    #fact-btn:hover {
+      transform: scale(1.05);
+      background-color: #a1887f;
+    }
+#fact-btn {
+    background-color: #a1887f; /* brighter brown button */
+    color: #fff;
+}
+
+    #fact-card {
+      background: rgba(0,0,0,0.4);
+      border-radius: 15px;
+      padding: 20px 30px;
+      max-width: 600px;
+      font-size: 18px;
+      line-height: 1.6;
+      opacity: 0;
+      transition: opacity 0.6s ease-in-out;
+    }
+
+    #fact-card.show {
+      opacity: 1;
+    }
+  </style>
 </head>
 <body>
-    <h1>🌌 Welcome to Project 1 🌌</h1>
-    <p>Enjoy a floating stars background!</p>
 
-    <button id="alertBtn">Click me!</button>
+  <h1>Saisa Astronomy Facts</h1>
 
-    <script src="project1.js"></script>
+  <button id="fact-btn">Get a Random Fact</button>
+
+  <div id="fact-card">Click the button to get an astronomy fact!</div>
+
+  <script>
+    const facts = [
+      "The Milky Way galaxy is about 13.6 billion years old.",
+      "Venus is the hottest planet in our solar system.",
+      "A day on Jupiter is just 10 hours long.",
+      "Neutron stars can spin 600 times per second.",
+      "The Sun accounts for 99.86% of the solar system's mass.",
+      "Mercury has no atmosphere.",
+      "Saturn could float in water because it is mostly gas.",
+      "A year on Venus is shorter than a day on Venus.",
+      "Uranus rotates on its side.",
+      "Mars has the tallest volcano in the solar system, Olympus Mons.",
+      "Pluto was reclassified as a dwarf planet in 2006.",
+      "The Moon is moving away from Earth at 3.8 cm per year.",
+      "Halley's Comet visits Earth every 76 years.",
+      "Black holes can bend light.",
+      "Neptune has the strongest winds in the solar system.",
+      "The Great Red Spot on Jupiter is a giant storm.",
+      "The Hubble Space Telescope has been operating for over 30 years.",
+      "There are more stars in the universe than grains of sand on Earth.",
+      "The largest asteroid in our solar system is Ceres.",
+      "A light year is the distance light travels in one year.",
+      "Mars has two moons: Phobos and Deimos.",
+      "Saturn has 82 confirmed moons.",
+      "The Sun is a G-type main-sequence star (G2V).",
+      "A total solar eclipse happens when the Moon completely covers the Sun.",
+      "The first human-made object in space was Sputnik 1 in 1957.",
+      "The International Space Station orbits Earth every 90 minutes.",
+      "Comets are made of ice, dust, and rocky material.",
+      "The Andromeda Galaxy is the closest spiral galaxy to the Milky Way.",
+      "Some stars are bigger than the orbit of Jupiter.",
+      "The Universe is approximately 13.8 billion years old.",
+      "Light from the Sun takes about 8 minutes to reach Earth.",
+      "There are billions of galaxies in the observable universe.",
+      "Black holes can merge and produce gravitational waves.",
+      "The first woman in space was Valentina Tereshkova in 1963.",
+      "The largest planet in our solar system is Jupiter.",
+      "Mars is known as the Red Planet due to iron oxide on its surface.",
+      "The Moon has no atmosphere.",
+      "Earth is the only planet known to support life.",
+      "Pluto’s orbit is more elliptical than any other planet’s orbit.",
+      "Solar flares can disrupt satellites and power grids on Earth.",
+      "Astronauts grow taller in space due to reduced gravity.",
+      "The Moon has moonquakes similar to earthquakes.",
+      "Saturn’s rings are made mostly of ice particles.",
+      "Venus rotates in the opposite direction to most planets.",
+      "The Hubble Space Telescope has helped discover dark energy.",
+      "The Orion Nebula is one of the brightest nebulae visible.",
+      "Some stars end their life in a supernova explosion.",
+      "The first human on the Moon was Neil Armstrong in 1969.",
+      "Water has been discovered on Mars.",
+      "The James Webb Space Telescope was launched in 2021.",
+      "Our solar system is moving toward the constellation Hercules."
+    ];
+
+    const colors = [
+      "#3e2723", "#5d4037", "#8d6e63", "#1a237e", "#4a148c", "#006064",
+      "#33691e", "#bf360c", "#212121", "#311b92"
+    ]; // space-themed colors
+
+    const factBtn = document.getElementById("fact-btn");
+    const factCard = document.getElementById("fact-card");
+    const body = document.body;
+document.body.style.background = "#8d6e63"; // brown background at start
+
+    factBtn.addEventListener("click", () => {
+      // Show random fact
+      const randomIndex = Math.floor(Math.random() * facts.length);
+      factCard.textContent = facts[randomIndex];
+      factCard.classList.remove("show");
+      void factCard.offsetWidth; // trigger reflow
+      factCard.classList.add("show");
+
+      // Change background color randomly
+      const colorIndex = Math.floor(Math.random() * colors.length);
+      body.style.background = colors[colorIndex];
+    });
+  </script>
+
 </body>
 </html>
