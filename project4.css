@@ -1,4 +1,4 @@
-/* Reset & basic styling */
+/* Reset */
 * {
   margin: 0;
   padding: 0;
@@ -7,66 +7,96 @@
 
 body {
   font-family: Arial, sans-serif;
-  background: linear-gradient(270deg, #ff6ec4, #7873f5, #3ad59f);
-  background-size: 600% 600%;
-  animation: gradientShift 15s ease infinite;
+  color: #fff;
   display: flex;
   flex-direction: column;
   align-items: center;
   min-height: 100vh;
+  position: relative;
   overflow-x: hidden;
+  z-index: 1;
 }
 
-@keyframes gradientShift {
-  0% {background-position: 0% 50%;}
-  50% {background-position: 100% 50%;}
-  100% {background-position: 0% 50%;}
+/* Video background */
+#background-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+  filter: brightness(0.5);
 }
 
 h1 {
-  margin: 30px 0;
-  color: #fff;
-  text-shadow: 1px 1px 5px rgba(0,0,0,0.4);
+  margin: 50px 0 30px;
+  text-shadow: 2px 2px 15px rgba(0,0,0,0.7);
+  font-size: 3rem;
 }
 
 /* Card container */
 .card-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 40px;
   width: 90%;
-  max-width: 800px;
-  padding-bottom: 50px;
+  max-width: 1000px;
+  padding-bottom: 60px;
+  justify-items: center;
 }
 
-/* Card styling */
+/* Star-shaped cards */
 .card {
+  width: 200px;
+  height: 200px;
+  clip-path: polygon(
+    50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 
+    50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%
+  );
   perspective: 1000px;
   cursor: pointer;
   position: relative;
+  transition: transform 0.6s, box-shadow 0.3s;
 }
 
+/* Front & Back faces */
 .front, .back {
   width: 100%;
-  padding: 40px 20px;
+  height: 100%;
   text-align: center;
-  border-radius: 12px;
+  padding: 25px;
+  border: 3px solid #fff;
+  border-radius: 0;
   backface-visibility: hidden;
-  transition: transform 0.6s, box-shadow 0.3s;
-  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-weight: bold;
   font-size: 18px;
-  position: relative;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+  transition: transform 0.6s, background-color 1s, color 1s;
+  color: #fff; /* default text color */
+}
+/* Updated shiny color animation for cards */
+@keyframes cardColorChange {
+  0% { background-color: rgba(255,0,150,0.3); color: #fff; box-shadow: 0 0 10px #ff6ec7, 0 0 20px #ff6ec7; }
+  25% { background-color: rgba(0,200,255,0.3); color: #fff; box-shadow: 0 0 15px #00c8ff, 0 0 30px #00c8ff; }
+  50% { background-color: rgba(255,255,0,0.3); color: #000; box-shadow: 0 0 20px #ffff00, 0 0 40px #ffff66; }
+  75% { background-color: rgba(0,255,100,0.3); color: #000; box-shadow: 0 0 15px #00ff64, 0 0 30px #66ff99; }
+  100% { background-color: rgba(255,0,150,0.3); color: #fff; box-shadow: 0 0 10px #ff6ec7, 0 0 20px #ff6ec7; }
 }
 
-/* Semi-transparent cards to show background */
+/* Apply animation to front faces */
 .front {
-  background: rgba(74, 144, 226, 0.8);
+  animation: cardColorChange 4s infinite;
+}
+
+.front {
+  animation: cardColorChange 4s infinite;
 }
 
 .back {
-  background: rgba(80, 227, 194, 0.85);
+  background: rgba(255,255,255,0.1);
   position: absolute;
   top: 0;
   left: 0;
@@ -82,12 +112,13 @@ h1 {
   transform: rotateY(0deg);
 }
 
-/* Hover effect */
-.card:hover .front, .card:hover .back {
-  box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+/* Hover */
+.card:hover {
+  transform: scale(1.2);
+  box-shadow: 0 0 20px #fff;
 }
 
-/* Modal styling */
+/* Modal */
 .modal {
   display: none;
   position: fixed;
@@ -101,13 +132,13 @@ h1 {
 }
 
 .modal-content {
-  background: #fff;
+  background: rgba(0,0,0,0.85);
   padding: 30px;
   border-radius: 12px;
   max-width: 400px;
   text-align: center;
+  color: #fff;
   position: relative;
-  box-shadow: 0 8px 30px rgba(0,0,0,0.3);
 }
 
 .close {
@@ -116,5 +147,5 @@ h1 {
   right: 15px;
   font-size: 24px;
   cursor: pointer;
-  color: #333;
+  color: #fff;
 }

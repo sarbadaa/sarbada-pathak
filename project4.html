@@ -3,10 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Skills Showcase</title>
+  <title>Project 4 - My Skills</title>
   <link rel="stylesheet" href="project4.css">
 </head>
 <body>
+
+  <!-- Video background -->
+  <video autoplay loop muted id="background-video">
+    <source src="video.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
 
   <h1>My Skills</h1>
 
@@ -25,12 +31,12 @@
     </div>
     <div class="card" data-skill="UI/UX">
       <div class="front">UI/UX</div>
-      <div class="back">I design intuitive user interfaces with a great experience.</div>
+      <div class="back">I design intuitive user interfaces with great experience.</div>
     </div>
   </div>
 
   <!-- Modal -->
-  <div id="modal" class="modal">
+  <div class="modal" id="modal">
     <div class="modal-content">
       <span class="close">&times;</span>
       <h2 id="modal-title"></h2>
