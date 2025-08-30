@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": "../sigma web development course"
+		},
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "website2"
+	}
+}
