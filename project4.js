@@ -1,24 +1,29 @@
-const planets = document.querySelectorAll('.planet');
+const cards = document.querySelectorAll('.card');
+const modal = document.getElementById('modal');
+const modalTitle = document.getElementById('modal-title');
+const modalText = document.getElementById('modal-text');
+const closeBtn = document.querySelector('.close');
 
-planets.forEach(planet => {
-  planet.addEventListener('click', () => {
-    // Remove existing info boxes
-    document.querySelectorAll('.planet-info').forEach(info => info.remove());
+cards.forEach(card => {
+  card.addEventListener('click', () => {
+    // Flip the card
+    card.classList.toggle('flipped');
 
-    // Create info box
-    const infoBox = document.createElement('div');
-    infoBox.className = 'planet-info';
-    infoBox.textContent = planet.dataset.fact;
-
-    planet.parentElement.appendChild(infoBox);
-
-    // Position info box below planet
-    infoBox.style.left = `${planet.offsetLeft + planet.offsetWidth / 2 - infoBox.offsetWidth / 2}px`;
-    infoBox.style.top = `${planet.offsetTop + planet.offsetHeight + 5}px`;
-
-    // Fade in
-    requestAnimationFrame(() => {
-      infoBox.style.opacity = 1;
-    });
+    // Show modal with more info
+    modalTitle.textContent = card.dataset.skill;
+    modalText.textContent = card.querySelector('.back').textContent;
+    modal.style.display = 'flex';
   });
+});
+
+// Close modal
+closeBtn.addEventListener('click', () => {
+  modal.style.display = 'none';
+});
+
+// Close modal if clicked outside
+window.addEventListener('click', (e) => {
+  if (e.target === modal) {
+    modal.style.display = 'none';
+  }
 });
