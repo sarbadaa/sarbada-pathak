@@ -1,24 +1,49 @@
-/* Project 3 CSS */
-
 body {
   margin: 0;
-  overflow: hidden;
-  font-family: Arial, sans-serif;
+  background: black;
   color: white;
+  font-family: Arial, sans-serif;
   text-align: center;
-  background-color: black;
 }
 
 h1, p {
-  position: absolute;
-  width: 100%;
-  z-index: 10;
   margin: 0;
-  padding: 10px 0;
-  background: rgba(0,0,0,0.5);
+  padding: 10px;
 }
 
-#space-container {
+#space {
+  position: relative;
   width: 100vw;
-  height: 100vh;
+  height: 80vh;
+  margin-top: 20px;
 }
+
+/* Sun */
+#sun {
+  width: 80px;
+  height: 80px;
+  background: yellow;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 40px 10px yellow;
+}
+
+/* Planets */
+.planet {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform-origin: -100px 0; /* distance from sun */
+  cursor: pointer;
+}
+
+#mercury { background: gray; --radius: 100px; --speed: 0.04; }
+#venus { background: orange; --radius: 140px; --speed: 0.03; }
+#earth { background: blue; --radius: 180px; --speed: 0.02; }
+#mars { background: red; --radius: 220px; --speed: 0.015; }

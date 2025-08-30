@@ -3,18 +3,21 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Project 3 - 3D Space Simulation</title>
+  <title>Project 3 - Orbiting Planets</title>
   <link rel="stylesheet" href="project3.css">
 </head>
 <body>
-  <h1>🚀 3D Space Simulation</h1>
-  <p>Use your mouse to rotate and explore the stars and planets!</p>
+  <h1>☀️ Orbiting Planets Simulation</h1>
+  <p>Click a planet to learn a fact about it!</p>
 
-  <!-- 3D canvas -->
-  <div id="space-container"></div>
+  <div id="space">
+    <div id="sun"></div>
+    <div class="planet" id="mercury"></div>
+    <div class="planet" id="venus"></div>
+    <div class="planet" id="earth"></div>
+    <div class="planet" id="mars"></div>
+  </div>
 
-  <!-- Three.js CDN -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r152/three.min.js"></script>
   <script src="project3.js"></script>
 </body>
 </html>

@@ -1,67 +1,26 @@
-// Project 3 JS - 3D Space Simulation using Three.js
+const planets = document.querySelectorAll('.planet');
+const facts = {
+  mercury: "Mercury is the closest planet to the Sun.",
+  venus: "Venus has a thick, toxic atmosphere.",
+  earth: "Earth is the only planet known to support life.",
+  mars: "Mars is known as the Red Planet."
+};
 
-// Create scene
-const scene = new THREE.Scene();
+planets.forEach(p => {
+  let angle = Math.random() * 360;
+  const radius = parseFloat(getComputedStyle(p).getPropertyValue('--radius'));
+  const speed = parseFloat(getComputedStyle(p).getPropertyValue('--speed'));
 
-// Create camera
-const camera = new THREE.PerspectiveCamera(
-  75,
-  window.innerWidth / window.innerHeight,
-  0.1,
-  1000
-);
+  // Orbit animation
+  setInterval(() => {
+    angle += speed * 360 / 60; // rotate around
+    const x = 50 + radius * Math.cos(angle) / window.innerWidth * 2;
+    const y = 50 + radius * Math.sin(angle) / window.innerHeight * 2;
+    p.style.transform = `translate(${x}vw, ${y}vh)`;
+  }, 20);
 
-// Create renderer
-const renderer = new THREE.WebGLRenderer();
-renderer.setSize(window.innerWidth, window.innerHeight);
-document.getElementById("space-container").appendChild(renderer.domElement);
-
-// Add stars
-function addStar() {
-  const geometry = new THREE.SphereGeometry(0.1, 8, 8);
-  const material = new THREE.MeshBasicMaterial({ color: 0xffffff });
-  const star = new THREE.Mesh(geometry, material);
-
-  star.position.x = Math.random() * 200 - 100;
-  star.position.y = Math.random() * 200 - 100;
-  star.position.z = Math.random() * 200 - 100;
-
-  scene.add(star);
-}
-
-Array(500).fill().forEach(addStar);
-
-// Add a rotating planet
-const planetGeometry = new THREE.SphereGeometry(2, 32, 32);
-const planetMaterial = new THREE.MeshStandardMaterial({ color: 0x00ffcc });
-const planet = new THREE.Mesh(planetGeometry, planetMaterial);
-planet.position.set(0, 0, -10);
-scene.add(planet);
-
-// Add light
-const ambientLight = new THREE.AmbientLight(0xffffff, 0.7);
-scene.add(ambientLight);
-
-const pointLight = new THREE.PointLight(0xffffff, 1);
-pointLight.position.set(5, 5, 5);
-scene.add(pointLight);
-
-// Camera position
-camera.position.z = 5;
-
-// Animate
-function animate() {
-  requestAnimationFrame(animate);
-
-  planet.rotation.y += 0.01;
-
-  renderer.render(scene, camera);
-}
-animate();
-
-// Handle window resize
-window.addEventListener("resize", () => {
-  camera.aspect = window.innerWidth / window.innerHeight;
-  camera.updateProjectionMatrix();
-  renderer.setSize(window.innerWidth, window.innerHeight);
+  // Click for fact
+  p.addEventListener('click', () => {
+    alert(facts[p.id]);
+  });
 });
