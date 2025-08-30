@@ -3,14 +3,23 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Project 4 - Interactive Galaxy Map</title>
+  <title>Project 4 - Planet Explorer</title>
   <link rel="stylesheet" href="project4.css">
 </head>
 <body>
-  <h1>🪐 Interactive Galaxy Map</h1>
-  <p>Click a galaxy to see detailed information!</p>
 
-  <div id="galaxy-container"></div>
+  <div class="space-container">
+    <!-- Planets -->
+    <img src="sun.png" alt="Sun" class="planet" id="sun" data-fact="The Sun is the star at the center of our Solar System.">
+    <img src="mercury.png" alt="Mercury" class="planet" id="mercury" data-fact="Mercury is the closest planet to the Sun.">
+    <img src="venus.png" alt="Venus" class="planet" id="venus" data-fact="Venus has a thick, toxic atmosphere.">
+    <img src="earth.png" alt="Earth" class="planet" id="earth" data-fact="Earth is the only planet known to support life.">
+    <img src="mars.png" alt="Mars" class="planet" id="mars" data-fact="Mars is known as the Red Planet.">
+    <img src="jupiter.png" alt="Jupiter" class="planet" id="jupiter" data-fact="Jupiter is the largest planet in the Solar System.">
+    <img src="saturn.png" alt="Saturn" class="planet" id="saturn" data-fact="Saturn is famous for its beautiful rings.">
+    <img src="uranus.png" alt="Uranus" class="planet" id="uranus" data-fact="Uranus rotates on its side.">
+    <img src="neptune.png" alt="Neptune" class="planet" id="neptune" data-fact="Neptune is known for its deep blue color.">
+  </div>
 
   <script src="project4.js"></script>
 </body>
